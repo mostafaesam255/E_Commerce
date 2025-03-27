@@ -1,0 +1,398 @@
+<app-header></app-header>
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="category-sidebar" style="height: auto;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="dropdown">
+              <a href="#" class="text-decoration-none text-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Woman's Fashion <span class="float-end">></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLinkActive="active">Dresses</a></li>
+                <li><a class="dropdown-item" routerLinkActive="active">Tops</a></li>
+                <li><a class="dropdown-item" routerLinkActive="active">Pan</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="dropdown">
+              <a href="#" class="text-decoration-none text-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Men's Fashion <span class="float-end">></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLinkActive="active">T-shirt</a></li>
+                <li><a class="dropdown-item" routerLinkActive="active">Jackets</a></li>
+                <li><a class="dropdown-item" routerLinkActive="active">Pants</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Electronics</a></li>
+          <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Home & Lifestyle</a></li>
+          <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Medicine</a></li>
+          <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Sports & Outdoor</a></li>
+          <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Baby's & Toys</a></li>
+          <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Groceries & Pets</a></li>
+          <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Health & Beauty</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../000000.png" class="d-block w-100" alt="iPhone 14 Banner">
+          </div>
+          <div class="carousel-item">
+            <img src="../000000.png" class="d-block w-100" alt="Another Banner">
+          </div>
+          <div class="carousel-item">
+            <img src="../000000.png" class="d-block w-100" alt="Another Banner">
+          </div>
+        </div>
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+      </div>
+      <div class="flash-sales mt-5">
+        <div class="d-flex flex-column align-items-start mb-4">
+          <div class="timer-container">
+            <div class="red-square me-2"></div>
+            <span class="text-danger">Today's</span>
+            <div class="timer">
+              <div><span>Days</span> <span class="time">{{ days }}</span></div>
+              <div><span>Hours</span> <span class="time">{{ hours }}</span></div>
+              <div><span>Minutes</span> <span class="time">{{ minutes }}</span></div>
+              <div><span>Seconds</span> <span class="time">{{ seconds }}</span></div>
+            </div>
+          </div>
+          <h2 class="mb-0 mt-2">Flash Sales</h2>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div></div>
+          <div class="carousel-controls">
+            <button class="btn btn-outline-secondary rounded-circle me-2" (click)="prevSlide()"> <i class="fas fa-arrow-left"></i></button>
+            <button class="btn btn-outline-secondary rounded-circle" (click)="nextSlide()">  <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div id="flashCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-3 mb-4" *ngFor="let product of flashSaleProducts; let i = index">
+                  <div class="product-card">
+                    <div class="position-relative">
+                      <span class="discount-badge bg-danger text-white" *ngIf="product.discount">{{ product.discount }}</span>
+                      <a [routerLink]="['/product']" [queryParams]="{ productId: i === 0 ? product.id : null }">
+                        <img [src]="product.image" class="img-fluid" [alt]="product.name">
+                      </a>
+                      <div class="product-actions">
+                        <button class="btn btn-outline-dark btn-sm" (click)="addToWishlist($event, product)"><i class="bi bi-heart"></i></button>
+                        <button class="btn btn-outline-dark btn-sm"><i class="bi bi-eye"></i></button>
+                      </div>
+                    </div>
+                    <button class="btn btn-dark w-100 add-to-cart" (click)="addToCart($event, product)">Add To Cart</button>
+                    <a [routerLink]="['/product']" [queryParams]="{ productId: i === 0 ? product.id : null }" class="text-decoration-none">
+                      <h5 class="mt-2 product-name">{{ product.name }}</h5>
+                    </a>
+                    <p class="text-danger mb-0">{{ product.price }} <span class="text-muted text-decoration-line-through">{{ product.originalPrice }}</span></p>
+                    <div class="rating">
+                      <i class="bi bi-star-fill text-warning" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'text-warning': star <= product.rating}"></i>
+                      <span class="text-muted ms-1">({{ product.reviews }})</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- باقي الـ carousel-item زي ما هو -->
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="#" class="btn btn-danger">View All Products</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="category-section mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="d-flex align-items-center">
+        <div class="red-square me-2"></div>
+        <h3 class="mb-0">Categories</h3>
+      </div>
+      <div class="carousel-controls">
+        <button class="btn btn-outline-secondary rounded-circle me-2" (click)="prevSlide()"> <i class="fas fa-arrow-left"></i></button>
+        <button class="btn btn-outline-secondary rounded-circle" (click)="nextSlide()">  <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+    <h4 class="mb-4">Browse By Category</h4>
+    <div class="category-container">
+      <div class="category-card">
+        <i class="bi bi-phone"></i>
+        <p>Phones</p>
+      </div>
+      <div class="category-card">
+        <i class="bi bi-laptop"></i>
+        <p>Computers</p>
+      </div>
+      <div class="category-card">
+        <i class="bi bi-watch"></i>
+        <p>SmartWatch</p>
+      </div>
+      <div class="category-card">
+        <i class="bi bi-camera"></i>
+        <p>Cameras</p>
+      </div>
+      <div class="category-card">
+        <i class="bi bi-headphones"></i>
+        <p>Headphones</p>
+      </div>
+      <div class="category-card">
+        <i class="bi bi-controller"></i>
+        <p>Gaming</p>
+      </div>
+    </div>
+  </div>
+  <div class="best-selling-section mt-5">
+    <div class="mb-4">
+      <div class="d-flex align-items-center mb-2">
+        <div class="red-square me-2"></div>
+        <h3 class="this-month-text mb-0">This Month</h3>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">Best Selling Products</h2>
+        <a href="#" class="btn btn-danger enlarged-view-btn">View All</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 mb-4" *ngFor="let product of bestSellingProducts">
+        <div class="product-card">
+          <div class="position-relative">
+            <a [routerLink]="'/404'">
+            <img [src]="product.image" class="img-fluid" [alt]="product.name">
+            </a>
+            <div class="product-actions">
+              <button class="btn btn-outline-dark btn-sm" (click)="addToWishlist($event, product)"><i class="bi bi-heart"></i></button>
+              <button class="btn btn-outline-dark btn-sm"><i class="bi bi-eye"></i></button>
+            </div>
+          </div>
+          <button class="btn btn-dark w-100 add-to-cart" (click)="addToCart($event, product)">Add To Cart</button>
+          <a [routerLink]="'/404'" class="text-decoration-none">
+          <h5 class="mt-2">{{ product.name }}</h5>
+          </a>
+          <p class="text-danger mb-0">{{ product.price }} <span class="text-muted text-decoration-line-through">{{ product.originalPrice }}</span></p>
+          <div class="rating">
+            <i class="bi bi-star-fill text-warning" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'text-warning': star <= product.rating}"></i>
+            <span class="text-muted ms-1">({{ product.reviews }})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="music-experience-section mt-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <p class="category-label text-success">Categories</p>
+        <h2 class="text-white mb-4">Enhance Your <br>Music Experience</h2>
+        <div class="timer d-flex gap-3 mb-4">
+          <div class="timer-circle">
+            <span class="time">{{musicHours}}</span>
+            <span>Hours</span>
+          </div>
+          <div class="timer-circle">
+            <span class="time">{{musicDays}}</span>
+            <span>Days</span>
+          </div>
+          <div class="timer-circle">
+            <span class="time">{{musicMinutes}}</span>
+            <span>Minutes</span>
+          </div>
+          <div class="timer-circle">
+            <span class="time">{{musicSeconds}}</span>
+            <span>Seconds</span>
+          </div>
+        </div>
+        <a href="#" class="btn btn-success">Buy Now!</a>
+      </div>
+      <div class="col-md-6 text-end">
+        <img src="../JBL_BOOMBOX_2_HERO_020_x1 (1) 1.png" class="img-fluid" alt="JBL Speaker">
+      </div>
+    </div>
+  </div>
+  <div class="explore-products-section mt-5">
+    <div class="mb-4">
+      <div class="d-flex align-items-center mb-2">
+        <div class="red-square me-2"></div>
+        <h3 class="this-month-text mb-0">Our Products</h3>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">Explore Our Products</h2>
+        <div class="carousel-controls">
+          <button class="btn btn-outline-secondary rounded-circle me-2" (click)="prevExploreSlide()"><</button>
+          <button class="btn btn-outline-secondary rounded-circle" (click)="nextExploreSlide()">></button>
+        </div>
+      </div>
+    </div>
+    <div id="exploreCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-3 mb-4" *ngFor="let product of exploreProductsFirstSlide">
+              <div class="product-card">
+                <div class="position-relative">
+                  <a [routerLink]="'/404'">
+                  <img [src]="product.image" class="img-fluid" [alt]="product.name">
+                  </a>
+                  <div class="product-actions">
+                    <button class="btn btn-outline-dark btn-sm" (click)="addToWishlist($event, product)"><i class="bi bi-heart"></i></button>
+                    <button class="btn btn-outline-dark btn-sm"><i class="bi bi-eye"></i></button>
+                  </div>
+                </div>
+                <button class="btn btn-dark w-100 add-to-cart enlarged-btn" (click)="addToCart($event, product)">Add To Cart</button>
+                <a [routerLink]="'/404'" class="text-decoration-none">
+                <h5 class="mt-2">{{ product.name }}</h5>
+                </a>
+                <p class="text-dark mb-0">{{ product.price }}</p>
+                <div class="rating">
+                  <i class="bi bi-star-fill text-warning" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'text-warning': star <= product.rating}"></i>
+                  <span class="text-muted ms-1">({{ product.reviews }})</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-3 mb-4" *ngFor="let product of exploreProductsSecondSlide">
+              <div class="product-card">
+                <div class="position-relative">
+                  <span class="new-badge bg-success text-white" *ngIf="product.isNew">NEW</span>
+                  <a [routerLink]="'/404'">
+                  <img [src]="product.image" class="img-fluid" [alt]="product.name">
+                  </a>
+                  <div class="product-actions">
+                    <button class="btn btn-outline-dark btn-sm" (click)="addToWishlist($event, product)"><i class="bi bi-heart"></i></button>
+                    <button class="btn btn-outline-dark btn-sm"><i class="bi bi-eye"></i></button>
+                  </div>
+                </div>
+                <button class="btn btn-dark w-100 add-to-cart enlarged-btn" (click)="addToCart($event, product)">Add To Cart</button>
+                <a [routerLink]="'/404'" class="text-decoration-none">
+                <h5 class="mt-2">{{ product.name }}</h5>
+                </a>
+                <p class="text-dark mb-0">{{ product.price }}</p>
+                <div class="rating">
+                  <i class="bi bi-star-fill text-warning" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'text-warning': star <= product.rating}"></i>
+                  <span class="text-muted ms-1">({{ product.reviews }})</span>
+                </div>
+                <div class="color-options mt-2" *ngIf="product.colors">
+                  <span class="color-dot" [ngClass]="color" *ngFor="let color of product.colors"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="#" class="btn btn-danger">View All Products</a>
+    </div>
+  </div>
+  <div class="new-arrival-section mt-5">
+    <div class="mb-4">
+      <div class="d-flex align-items-center mb-2">
+        <div class="red-square me-2"></div>
+        <h3 class="this-month-text mb-0">Featured</h3>
+      </div>
+      <h2 class="mb-0">New Arrival</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="arrival-card ps5">
+          <img src="../ps5-slim-goedkope-playstation_large 1.png" class="img-fluid" alt="PlayStation 5">
+          <div class="card-content">
+            <h5>PlayStation 5</h5>
+            <p class="text-muted">Black and White version of the PS5 <br> coming out on sale.</p>
+            <a href="$" class="btn btn-outline-light">Shop Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="arrival-card womens-collection">
+          <img src="../attractive-woman-wearing-hat-posing-black-background 1.png" class="img-fluid" alt="Women's Collections">
+          <div class="card-content">
+            <h5>Women's Collections</h5>
+            <p class="text-muted">Featured woman collections that <br> give you another vibe.</p>
+            <a href="$" class="btn btn-outline-light">Shop Now</a>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-6 mb-4">
+            <div class="arrival-card speakers">
+              <img src="69-694768_amazon-echo-png-clipart-transparent-amazon-echo-png 1.png" class="img-fluid" alt="Speakers">
+              <div class="card-content">
+                <h5>Speakers</h5>
+                <p class="text-muted">Amazon wireless speakers</p>
+                <a href="$" class="btn btn-outline-light">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="arrival-card perfume">
+              <img src="../Frame 706.png" class="img-fluid" alt="Perfume">
+              <div class="card-content">
+                <h5>Perfume</h5>
+                <p class="text-muted">GUCCI INTENSE OUD EDP</p>
+                <a href="$" class="btn btn-outline-light">Shop Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="service-features mt-5 py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="icon-wrapper">
+              <div class="icon-circle">
+                <i class="bi bi-truck"></i>
+              </div>
+            </div>
+            <h5>FREE AND FAST DELIVERY</h5>
+            <p class="text-muted">Free delivery for all orders over $140</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="icon-wrapper">
+              <div class="icon-circle">
+                <i class="bi bi-headset"></i>
+              </div>
+            </div>
+            <h5>24/7 CUSTOMER SERVICE</h5>
+            <p class="text-muted">Friendly 24/7 customer support</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="icon-wrapper">
+              <div class="icon-circle">
+                <i class="bi bi-shield-check"></i>
+              </div>
+            </div>
+            <h5>MONEY BACK GUARANTEE</h5>
+            <p class="text-muted">We return money within 30 days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="scroll-to-top btn" (click)="scrollToTop()">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+  <app-footer></app-footer>
+</div>

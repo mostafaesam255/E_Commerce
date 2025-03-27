@@ -1,0 +1,69 @@
+<app-header></app-header>
+<div class="container mt-5">
+  <div class="wishlist-section">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Wishlist ({{ wishlistItems.length }})</h2>
+      <button class="btn btn-outline-dark" (click)="moveAllToCart()">Move All To Bag</button>
+    </div>
+    <div class="row">
+      <div class="col-md-3 mb-4" *ngFor="let product of wishlistItems">
+        <div class="product-card">
+          <div class="position-relative">
+            <span class="discount-badge bg-danger text-white" *ngIf="product?.discount">{{ product.discount }}</span>
+            <span class="new-badge bg-success text-white" *ngIf="product?.isNew">NEW</span>
+            <img [src]="product.image" class="img-fluid" [alt]="product.name">
+            <div class="product-actions">
+              <button class="btn btn-outline-dark btn-sm" (click)="removeFromWishlist(product)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+          <button class="btn btn-dark w-100 add-to-cart" (click)="addToCart(product)">
+            <i class="bi bi-cart"></i> Add To Cart
+          </button>
+          <h5 class="mt-2">{{ product.name }}</h5>
+          <p class="text-danger mb-0">{{ product.price }} 
+            <span class="text-muted text-decoration-line-through" *ngIf="product?.originalPrice">{{ product.originalPrice }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="just-for-you-section mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="d-flex align-items-center">
+        <div class="red-square me-2"></div>
+        <h3 class="mb-0">Just For You</h3>
+      </div>
+      <a href="#" class="btn btn-outline-dark">See All</a>
+    </div>
+    <div class="row">
+      <div class="col-md-3 mb-4" *ngFor="let product of justForYouProducts">
+        <div class="product-card">
+          <div class="position-relative">
+            <span class="discount-badge bg-danger text-white" *ngIf="product?.discount">{{ product.discount }}</span>
+            <span class="new-badge bg-success text-white" *ngIf="product?.isNew">NEW</span>
+            <img [src]="product.image" class="img-fluid" [alt]="product.name">
+            <div class="product-actions">
+              <button class="btn btn-outline-dark btn-sm">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </div>
+          <button class="btn btn-dark w-100 add-to-cart" (click)="addToCart(product)">
+            <i class="bi bi-cart"></i> Add To Cart
+          </button>
+          <h5 class="mt-2">{{ product.name }}</h5>
+          <p class="text-danger mb-0">{{ product.price }} 
+            <span class="text-muted text-decoration-line-through" *ngIf="product?.originalPrice">{{ product.originalPrice }}</span>
+          </p>
+          <div class="rating" *ngIf="product.rating">
+            <i class="bi bi-star-fill text-warning" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'text-warning': star <= product.rating}"></i>
+            <span class="text-muted ms-1">({{ product.reviews }})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,403 @@
+    .container {
+        margin-top: 4rem;
+        margin-bottom: 3rem;
+    }
+    
+    h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #666;
+    }
+    
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .rounded {
+        border-radius: 10px;
+    }
+    
+    .stat-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        background-color: #db4444;
+        color: #fff;
+    }
+    
+    .stat-card:hover h3,
+    .stat-card:hover p {
+        color: #fff;
+    }
+    
+    .stat-card:hover .icon-wrapper {
+        background-color: #fff;
+    }
+    
+    .stat-card:hover .icon-circle {
+        background-color: #db4444;
+    }
+    
+    .stat-card:hover .icon-circle i {
+        color: #fff;
+    }
+    
+    .stat-card.highlight {
+        background-color: #db4444;
+        color: #fff;
+    }
+    
+    .stat-card.highlight h3,
+    .stat-card.highlight p {
+        color: #fff;
+    }
+    
+    .stat-card.highlight .icon-wrapper {
+        background-color: #fff;
+    }
+    
+    .stat-card.highlight .icon-circle {
+        background-color: #db4444;
+    }
+    
+    .stat-card.highlight .icon-circle i {
+        color: #fff;
+    }
+    
+    .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        background-color: #666;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        background-color: #000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+    
+    .icon-circle i {
+        color: #fff;
+    }
+    
+    .stat-card h3 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-card p {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 0;
+    }
+    
+    .team-card {
+        padding: 20px;
+    }
+    
+    .team-card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    
+    .team-card h4 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    
+    .team-card p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .social-icons a {
+        color: #666;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+        color: #db4444;
+    }
+    
+    .dot {
+        height: 10px;
+        width: 10px;
+        background-color: #ddd;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 5px;
+    }
+    
+    .dot.active {
+        background-color: #db4444;
+    }
+    
+    .feature-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .icon-wrapper {
+        width: 60px;
+        height: 60px;
+        background: #e9ecef;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+        background: #000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .feature-card i {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+    
+    .feature-card h5 {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    .feature-card p {
+        font-size: 11px;
+        max-width: 200px;
+        font-weight: bold;
+        margin: 0 auto;
+    }
+    
+    .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+    }
+    
+    .scroll-to-top:hover {
+        opacity: 1;
+    }
+    
+    .scroll-to-top i {
+        font-size: 1.2rem;
+    }
+    
+    @media (max-width: 991px) {
+        .container {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        }
+    
+        .row.align-items-center {
+        flex-direction: column;
+        }
+    
+        .col-md-6 {
+        margin-bottom: 20px;
+        text-align: center;
+        }
+    
+        h1 {
+        font-size: 2rem;
+        }
+    
+        p {
+        font-size: 1rem;
+        }
+    
+        .stat-card {
+        padding: 15px;
+        }
+    
+        .stat-card .icon-wrapper {
+        width: 60px;
+        height: 60px;
+        }
+    
+        .stat-card .icon-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        }
+    
+        .stat-card h3 {
+        font-size: 1.5rem;
+        }
+    
+        .stat-card p {
+        font-size: 0.9rem;
+        }
+    
+        .team-card {
+        padding: 15px;
+        }
+    
+        .team-card h4 {
+        font-size: 1.2rem;
+        }
+    
+        .team-card p {
+        font-size: 0.9rem;
+        }
+    
+        .social-icons a {
+        font-size: 1rem;
+        }
+    
+        .feature-card .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        }
+    
+        .feature-card .icon-circle {
+        width: 30px;
+        height: 30px;
+        }
+    
+        .feature-card i {
+        font-size: 1.2rem;
+        }
+    
+        .feature-card h5 {
+        font-size: 1rem;
+        }
+    
+        .feature-card p {
+        font-size: 10px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .container {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        }
+    
+        h1 {
+        font-size: 1.5rem;
+        }
+    
+        p {
+        font-size: 0.9rem;
+        }
+    
+        .stat-card {
+        padding: 10px;
+        }
+    
+        .stat-card .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        }
+    
+        .stat-card .icon-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        }
+    
+        .stat-card h3 {
+        font-size: 1.2rem;
+        }
+    
+        .stat-card p {
+        font-size: 0.8rem;
+        }
+    
+        .team-card {
+        padding: 10px;
+        }
+    
+        .team-card h4 {
+        font-size: 1rem;
+        }
+    
+        .team-card p {
+        font-size: 0.8rem;
+        }
+    
+        .social-icons a {
+        font-size: 0.9rem;
+        }
+    
+        .dot {
+        height: 8px;
+        width: 8px;
+        margin: 0 3px;
+        }
+    
+        .feature-card .icon-wrapper {
+        width: 40px;
+        height: 40px;
+        }
+    
+        .feature-card .icon-circle {
+        width: 25px;
+        height: 25px;
+        }
+    
+        .feature-card i {
+        font-size: 1rem;
+        }
+    
+        .feature-card h5 {
+        font-size: 0.9rem;
+        }
+    
+        .feature-card p {
+        font-size: 9px;
+        }
+    
+        .breadcrumb {
+        font-size: 0.8rem;
+        }
+    
+        .breadcrumb-item a {
+        font-size: 0.8rem;
+        }
+    }

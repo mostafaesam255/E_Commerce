@@ -1,0 +1,36 @@
+    .container {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        min-height: 60vh; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .error-content {
+        margin-top: 5rem;
+    }
+    
+    h1 {
+        font-size: 5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 2rem;
+    }
+    
+    .btn-danger {
+        background-color: #db4444;
+        border-color: #db4444;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c0392b;
+        border-color: #c0392b;
+    }

@@ -1,0 +1,57 @@
+    <app-header></app-header>
+    <div class="container mt-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/" class="text-decoration-none text-dark">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-md-4">
+        <div class="contact-info mb-4">
+            <div class="d-flex align-items-center mb-3">
+            <div class="icon-circle me-3">
+                <i class="bi bi-telephone-fill"></i>
+            </div>
+            <h4 class="text-danger">Call To Us</h4>
+            </div>
+            <p>We are available 24/7, 7 days a week.</p>
+            <p>Phone: +880161112222</p>
+        </div>
+        <hr>
+        <div class="contact-info">
+            <div class="d-flex align-items-center mb-3">
+            <div class="icon-circle me-3">
+                <i class="bi bi-envelope-fill"></i>
+            </div>
+            <h4 class="text-danger">Write To Us</h4>
+            </div>
+            <p>Fill out our form and we will contact you within 24 hours.</p>
+            <p>Emails: <a href="mailto:customer@exclusive.com">customerexclusive.com</a></p>
+            <p>Emails: <a href="mailto:support@exclusive.com">supportexclusive.com</a></p>
+        </div>
+        </div>
+        <div class="col-md-8">
+        <form>
+            <div class="row mb-3">
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Your Name *" [(ngModel)]="contactForm.name" name="name" required>
+            </div>
+            <div class="col-md-4">
+                <input type="email" class="form-control" placeholder="Your Email *" [(ngModel)]="contactForm.email" name="email" required>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Your Phone *" [(ngModel)]="contactForm.phone" name="phone" required>
+            </div>
+            </div>
+            <div class="mb-3">
+            <textarea class="form-control" placeholder="Your Message" rows="5" [(ngModel)]="contactForm.message" name="message"></textarea>
+            </div>
+            <div class="text-end">
+            <button type="button" class="btn btn-danger" (click)="sendMessage()">Send Message</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    <app-footer></app-footer>

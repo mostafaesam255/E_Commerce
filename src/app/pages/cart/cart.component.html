@@ -1,0 +1,78 @@
+    <app-header></app-header>
+    <div class="container mt-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/" class="text-decoration-none text-dark">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-8">
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of cartItems">
+                <td>
+                <div class="d-flex align-items-center">
+                    <img [src]="product.image" class="img-fluid me-3" [alt]="product.name" style="width: 50px; height: 50px;">
+                    <span>{{ product.name }}</span>
+                    <button class="btn btn-link text-danger ms-2" (click)="removeFromCart(product)">
+                    <i class="bi bi-x-circle"></i>
+                    </button>
+                </div>
+                </td>
+                <td>{{ product.price }}</td>
+                <td>
+                <div class="input-group input-group-sm" style="width: 100px;">
+                    <button class="btn btn-outline-secondary" (click)="decreaseQuantity(product)">-</button>
+                    <input type="text" class="form-control text-center" [(ngModel)]="product.quantity" readonly>
+                    <button class="btn btn-outline-secondary" (click)="increaseQuantity(product)">+</button>
+                </div>
+                </td>
+                <td>${{ getSubtotal(product) }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between mt-4">
+            <a routerLink="/" class="btn btn-outline-dark">Return To Shop</a>
+            <button class="btn btn-outline-dark" (click)="updateCart()">Update Cart</button>
+        </div>
+        </div>
+
+        <div class="col-md-4">
+        <div class="border p-4">
+            <div class="mb-4">
+            <input type="text" class="form-control" placeholder="Coupon Code" [(ngModel)]="couponCode">
+            <button class="btn btn-danger mt-2 w-100" (click)="applyCoupon()">Apply Coupon</button>
+            </div>
+            <div class="border p-3">
+            <h5>Cart Total</h5>
+            <div class="d-flex justify-content-between">
+                <span>Subtotal:</span>
+                <span>${{ getTotal() }}</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <span>Shipping:</span>
+                <span>Free</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <span>Total:</span>
+                <span>${{ getTotal() }}</span>
+            </div>
+            <a routerLink="/checkout" class="btn btn-danger mt-3 w-100">Proceed to checkout</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <app-footer></app-footer>

@@ -1,0 +1,180 @@
+    .container {
+        margin-top: 5rem;
+    }
+    
+    .table th {
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .table td {
+        vertical-align: middle;
+    }
+    
+    .input-group-sm .form-control {
+        height: 30px;
+    }
+    
+    .btn-danger {
+        background-color: #db4444;
+        border-color: #db4444;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c0392b;
+        border-color: #c0392b;
+    }
+    
+    .border {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    h5 {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+    
+    hr {
+        margin: 0.5rem 0;
+    }
+    
+    @media (max-width: 991px) {
+        .container {
+        margin-top: 3rem;
+        }
+    
+        .table th,
+        .table td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        }
+    
+        .table th:nth-child(1),
+        .table td:nth-child(1) {
+        min-width: 200px;
+        }
+    
+        .table th:nth-child(2),
+        .table td:nth-child(2),
+        .table th:nth-child(3),
+        .table td:nth-child(3),
+        .table th:nth-child(4),
+        .table td:nth-child(4) {
+        min-width: 100px;
+        }
+    
+        .table img {
+        width: 40px;
+        height: 40px;
+        }
+    
+        .input-group-sm {
+        width: 80px !important;
+        }
+    
+        .input-group-sm .form-control {
+        height: 25px;
+        font-size: 0.8rem;
+        }
+    
+        .input-group-sm .btn {
+        padding: 0 5px;
+        }
+    
+        .d-flex.justify-content-between.mt-4 {
+        flex-direction: column;
+        gap: 10px;
+        }
+    
+        .btn-outline-dark {
+        width: 100%;
+        padding: 8px;
+        }
+    
+        .col-md-4 {
+        margin-top: 20px;
+        }
+    
+        .border.p-4 {
+        padding: 20px;
+        }
+    
+        h5 {
+        font-size: 1.1rem;
+        }
+    
+        .form-control {
+        font-size: 0.9rem;
+        }
+    
+        .btn-danger.mt-2.w-100,
+        .btn-danger.mt-3.w-100 {
+        padding: 8px;
+        font-size: 0.9rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .container {
+        margin-top: 2rem;
+        }
+    
+        .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        }
+    
+        .table th,
+        .table td {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+        }
+    
+        .table img {
+        width: 30px;
+        height: 30px;
+        }
+    
+        .input-group-sm {
+        width: 70px !important;
+        }
+    
+        .input-group-sm .form-control {
+        height: 20px;
+        font-size: 0.7rem;
+        }
+    
+        .input-group-sm .btn {
+        padding: 0 3px;
+        font-size: 0.7rem;
+        }
+    
+        .btn-outline-dark {
+        padding: 6px;
+        font-size: 0.9rem;
+        }
+    
+        .border.p-4 {
+        padding: 15px;
+        }
+    
+        h5 {
+        font-size: 1rem;
+        }
+    
+        .form-control {
+        font-size: 0.8rem;
+        }
+    
+        .d-flex.justify-content-between {
+        font-size: 0.9rem;
+        }
+    
+        .btn-danger.mt-2.w-100,
+        .btn-danger.mt-3.w-100 {
+        padding: 6px;
+        font-size: 0.8rem;
+        }
+    }

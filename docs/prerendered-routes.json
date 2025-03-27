@@ -1,0 +1,14 @@
+{
+  "routes": {
+    "/E_Commerce": {},
+    "/E_Commerce/about": {},
+    "/E_Commerce/account": {},
+    "/E_Commerce/cart": {},
+    "/E_Commerce/checkout": {},
+    "/E_Commerce/contact": {},
+    "/E_Commerce/login": {},
+    "/E_Commerce/product": {},
+    "/E_Commerce/sign-up": {},
+    "/E_Commerce/wishlist": {}
+  }
+}

@@ -1,0 +1,153 @@
+    .container {
+        margin-top: 5rem;
+        margin-bottom: 10rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    
+    h5 {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+    
+    .list-unstyled a {
+        text-decoration: none;
+    }
+    
+    .list-unstyled a.text-muted:hover {
+        color: #db4444 !important;
+    }
+    
+    .form-label {
+        font-weight: 500;
+    }
+    
+    .form-control {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    
+    .btn-danger {
+        background-color: #db4444;
+        border-color: #db4444;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c0392b;
+        border-color: #c0392b;
+    }
+    
+    .welcome-text {
+        color: #000;
+    }
+    
+    .welcome-message {
+        font-size: 1.1rem;
+    }
+    
+    @media (max-width: 991px) {
+        .container {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        }
+    
+        .row {
+        flex-direction: column;
+        }
+    
+        .col-md-3,
+        .col-md-9 {
+        margin-bottom: 30px;
+        }
+    
+        .d-flex.justify-content-between {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        }
+    
+        .welcome-message {
+        text-align: center;
+        width: 100%;
+        }
+    
+        h2 {
+        font-size: 1.5rem;
+        }
+    
+        h5 {
+        font-size: 1.1rem;
+        }
+    
+        .list-unstyled a {
+        font-size: 0.9rem;
+        }
+    
+        .form-label {
+        font-size: 0.9rem;
+        }
+    
+        .form-control {
+        padding: 8px;
+        }
+    
+        .row.mb-3 .col-md-6 {
+        margin-bottom: 15px;
+        }
+    
+        .btn-danger,
+        .btn-outline-dark {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .container {
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        }
+    
+        h2 {
+        font-size: 1.2rem;
+        }
+    
+        h5 {
+        font-size: 1rem;
+        }
+    
+        .list-unstyled a {
+        font-size: 0.85rem;
+        }
+    
+        .form-label {
+        font-size: 0.85rem;
+        }
+    
+        .form-control {
+        padding: 6px;
+        font-size: 0.85rem;
+        }
+    
+        .btn-danger,
+        .btn-outline-dark {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+        }
+    
+        .welcome-message {
+        font-size: 0.9rem;
+        }
+    
+        .breadcrumb {
+        font-size: 0.8rem;
+        }
+    
+        .breadcrumb-item a {
+        font-size: 0.8rem;
+        }
+    }

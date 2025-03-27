@@ -1,0 +1,103 @@
+    <app-header></app-header>
+    <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/account">Account</a></li>
+        <li class="breadcrumb-item"><a routerLink="/gaming">Gaming</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ product?.name || 'Product' }}</li>
+        </ol>
+    </nav>
+    <div class="row" *ngIf="product; else noProduct">
+        <div class="col-md-6">
+        <div class="product-images d-flex">
+            <div class="thumbnail-images me-3 d-flex flex-column gap-2">
+            <img *ngFor="let image of product.images" [src]="image" class="thumbnail" [ngClass]="{'active': image === selectedImage}" (click)="changeImage(image)" alt="Thumbnail">
+            </div>
+            <div class="main-image flex-grow-1">
+            <img [src]="selectedImage" class="img-fluid" alt="{{ product.name }}">
+            </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <h2>{{ product.name }}</h2>
+        <div class="rating d-flex align-items-center mb-2">
+            <i class="bi bi-star-fill text-warning" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'text-warning': star <= product.rating}"></i>
+            <span class="ms-2">({{ product.reviews }} Reviews)</span>
+            <span class="ms-3 text-success">| {{ product.inStock ? 'In Stock' : 'Out of Stock' }}</span>
+        </div>
+        <h3 class="price">{{ product.price }}</h3>
+        <p class="description">{{ product.description }}</p>
+        <div class="colors mb-3">
+            <label class="me-2">Colours:</label>
+            <span class="color-dot" *ngFor="let color of product.colors" [ngClass]="color"></span>
+        </div>
+        <div class="sizes mb-3">
+            <label class="me-2">Size:</label>
+            <button class="btn btn-outline-secondary btn-sm me-1" *ngFor="let size of product.sizes">{{ size }}</button>
+        </div>
+        <div class="d-flex align-items-center mb-3">
+            <div class="quantity me-3">
+            <button class="btn btn-outline-secondary" (click)="decreaseQuantity()">-</button>
+            <span class="mx-2">{{ quantity }}</span>
+            <button class="btn btn-outline-secondary" (click)="increaseQuantity()">+</button>
+            </div>
+            <button class="btn btn-danger me-3">Buy Now</button>
+            <button class="btn btn-outline-secondary" (click)="addToWishlist(product)"><i class="bi bi-heart"></i></button>
+        </div>
+        <div class="delivery-info">
+            <div class="info-box mb-2">
+            <i class="bi bi-truck me-2"></i>
+            <div>
+                <strong>Free Delivery</strong>
+                <p>Enter your postal code for Delivery Availability</p>
+            </div>
+            </div>
+            <hr>
+            <div class="info-box">
+            <i class="bi bi-arrow-repeat me-2"></i>
+            <div>
+                <strong>Return Delivery</strong>
+                <p>Free 30 Days Delivery Returns. <a href="#">Details</a></p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="related-items mt-5">
+        <div class="d-flex align-items-center mb-4">
+        <div class="red-square me-2"></div>
+        <h3 class="mb-0">Related Item</h3>
+        </div>
+        <div class="row">
+        <div class="col-md-3 mb-4" *ngFor="let relatedProduct of relatedProducts">
+            <div class="product-card">
+            <div class="position-relative">
+                <span class="discount-badge bg-danger text-white" *ngIf="relatedProduct.discount">{{ relatedProduct.discount }}</span>
+                <a [routerLink]="['/product']" [queryParams]="{ productId: relatedProduct.id }">
+                <img [src]="relatedProduct.image" class="img-fluid" [alt]="relatedProduct.name">
+                </a>
+                <div class="product-actions">
+                <button class="btn btn-outline-dark btn-sm" (click)="addToWishlist(relatedProduct)"><i class="bi bi-heart"></i></button>
+                <button class="btn btn-outline-dark btn-sm"><i class="bi bi-eye"></i></button>
+                </div>
+            </div>
+            <button class="btn btn-dark w-100 add-to-cart" (click)="addToCart(relatedProduct)">Add To Cart</button>
+            <h5 class="mt-2">{{ relatedProduct.name }}</h5>
+            <p class="text-danger mb-0">{{ relatedProduct.price }} <span class="text-muted text-decoration-line-through">{{ relatedProduct.originalPrice }}</span></p>
+            <div class="rating">
+                <i class="bi bi-star-fill text-warning" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'text-warning': star <= relatedProduct.rating}"></i>
+                <span class="text-muted ms-1">({{ relatedProduct.reviews }})</span>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <ng-template #noProduct>
+        <div class="text-center mt-5">
+        <h3>No Product Selected</h3>
+        <p>Please select a product from the home page to view details.</p>
+        <a routerLink="/" class="btn btn-danger mt-3">Back to Home</a>
+        </div>
+    </ng-template>
+    </div>
+    <app-footer></app-footer>

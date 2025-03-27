@@ -1,0 +1,100 @@
+<app-header></app-header>
+<div class="container mt-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../account" routerLink="/account" class="text-decoration-none text-dark">Account</a></li>
+            <li class="breadcrumb-item"><a href="../account" routerLink="/account" class="text-decoration-none text-dark">My Account</a></li>
+            <li class="breadcrumb-item"><a href="$" routerLink="$" class="text-decoration-none text-dark">Product</a></li>
+            <li class="breadcrumb-item"><a href="../cart" routerLink="/cart" class="text-decoration-none text-dark">View Cart</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="mb-4">Billing Details</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name*</label>
+                    <input type="text" class="form-control" id="firstName" [(ngModel)]="billingDetails.firstName" name="firstName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="companyName" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="companyName" [(ngModel)]="billingDetails.companyName" name="companyName">
+                </div>
+                <div class="mb-3">
+                    <label for="streetAddress" class="form-label">Street Address*</label>
+                    <input type="text" class="form-control" id="streetAddress" [(ngModel)]="billingDetails.streetAddress" name="streetAddress" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apartment" class="form-label">Apartment, floor, etc. (optional)</label>
+                    <input type="text" class="form-control" id="apartment" [(ngModel)]="billingDetails.apartment" name="apartment">
+                </div>
+                <div class="mb-3">
+                    <label for="townCity" class="form-label">Town/City*</label>
+                    <input type="text" class="form-control" id="townCity" [(ngModel)]="billingDetails.townCity" name="townCity" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number*</label>
+                    <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="billingDetails.phoneNumber" name="phoneNumber" required>
+                </div>
+                <div class="mb-3">
+                    <label for="emailAddress" class="form-label">Email Address*</label>
+                    <input type="email" class="form-control" id="emailAddress" [(ngModel)]="billingDetails.emailAddress" name="emailAddress" required>
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="saveInfo" [(ngModel)]="billingDetails.saveInfo" name="saveInfo">
+                    <label class="form-check-label text-danger" for="saveInfo">Save this information for faster check-out next time</label>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="order-summary">
+                <div *ngFor="let product of cartItems" class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center">
+                        <img [src]="product.image" class="img-fluid me-3" [alt]="product.name" style="width: 50px; height: 50px;">
+                        <span>{{ product.name }}</span>
+                    </div>
+                    <span>${{ getSubtotal(product) }}</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span>${{ getTotal() }}</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <span>Shipping:</span>
+                    <span>Free</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <span>Total:</span>
+                    <span>${{ getTotal() }}</span>
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="bank" value="bank" [(ngModel)]="paymentMethod" name="paymentMethod">
+                        <label class="form-check-label" for="bank">Bank</label>
+                        <div class="d-flex gap-2 mt-2" *ngIf="paymentMethod === 'bank'">
+                            <img src="../image 32.png" alt="Bkash" style="width: 30px;">
+                            <img src="../image 30.png" alt="visa" style="width: 30px;">
+                            <img src="../image 31.png" alt="Mastercard" style="width: 30px;">
+                            <img src="../image 33.png" alt="Paypal" style="width: 30px;">
+                        </div>
+                    </div>
+                    <div class="form-check mt-2">
+                        <input type="radio" class="form-check-input" id="cash" value="cash" [(ngModel)]="paymentMethod" name="paymentMethod">
+                        <label class="form-check-label" for="cash">Cash on delivery</label>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Coupon Code" [(ngModel)]="couponCode">
+                    <button class="btn btn-danger" (click)="applyCoupon()">Apply Coupon</button>
+                </div>
+                <button class="btn btn-danger w-100" (click)="placeOrder()">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
